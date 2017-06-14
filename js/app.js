@@ -85,7 +85,7 @@ var Player = function() {
 
     // This method checks to see if the player is within acceptable collision range of the enemy, and then resets the game if the player and the enemy are currently colliding.
     this.checkCollision = function(enemyX, enemyY) {
-        if ((Math.abs(this.x - enemyX) > 0) && (Math.abs(this.x - enemyX) < 20) && (this.y == enemyY)) {
+        if ((Math.abs(this.x - enemyX) > 0) && (Math.abs(this.x - enemyX) < 70) && (this.y == enemyY)) {
             this.x = 205;
             this.y = 370;
         }
