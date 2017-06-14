@@ -48,47 +48,51 @@ var Player = function() {
     // y Coordinate initial set and boundaries
     this.y = 370;
     this.yMax = 370;
+}
 
-    // Update Function that runs every frame
-    this.update = function() {
-        // Checking to see if player has gone into the water.  If they have, resets the player position.
-        if (this.y < 50) {
-            this.x = 205;
-            this.y = 370;
-        }
+// Update Function that runs every frame
+Player.prototype.update = function() {
+    // Checking to see if player has gone into the water.  If they have, resets the player position.
+    if (this.y < 50) {
+        this.reset();
     }
+}
 
-    // Render function runs every frame
-    this.render = function() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+// Method that resets the player position if they lose or win the game
+Player.prototype.reset = function() {
+    this.x = 205;
+    this.y = 370;
+}
+
+// Render function runs every frame
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+// This function handles all keyboard inputs by the player
+Player.prototype.handleInput = function(e) {
+    switch (e) {
+        case 'up':
+            this.y -= 80;
+            break;
+        case 'down':
+            if(this.y < this.yMax) this.y += 80;
+            break;
+        case 'right':
+            if(this.x < this.xMax) this.x += 100;
+            break;
+        case 'left':
+            if(this.x > this.xMin) this.x -= 100;
+            break;
+        default:
+            break;
     }
+}
 
-    // This function handles all keyboard inputs by the player
-    this.handleInput = function(e) {
-        switch (e) {
-            case 'up':
-                this.y -= 80;
-                break;
-            case 'down':
-                if(this.y < this.yMax) this.y += 80;
-                break;
-            case 'right':
-                if(this.x < this.xMax) this.x += 100;
-                break;
-            case 'left':
-                if(this.x > this.xMin) this.x -= 100;
-                break;
-            default:
-                break;
-        }
-    }
-
-    // This method checks to see if the player is within acceptable collision range of the enemy, and then resets the game if the player and the enemy are currently colliding.
-    this.checkCollision = function(enemyX, enemyY) {
-        if ((Math.abs(this.x - enemyX) > 0) && (Math.abs(this.x - enemyX) < 70) && (this.y == enemyY)) {
-            this.x = 205;
-            this.y = 370;
-        }
+// This method checks to see if the player is within acceptable collision range of the enemy, and then resets the game if the player and the enemy are currently colliding.
+Player.prototype.checkCollision = function(enemyX, enemyY) {
+    if ((Math.abs(this.x - enemyX) > 0) && (Math.abs(this.x - enemyX) < 70) && (this.y == enemyY)) {
+        this.reset();
     }
 }
 
