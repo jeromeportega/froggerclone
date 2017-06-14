@@ -11,9 +11,9 @@ Frogger-Clone Game
 
 #### Movement
 
-Use the arrow keys to move left, down, right, and up.
-If you hit an enemy, you will start back at the starting position to try again.
-You win if you make it to the water.  This will be signified by you being sent back to the starting point.
+Use the arrow keys to move left, down, right, and up.   
+If you hit an enemy, you will start back at the starting position to try again.   
+You win if you make it to the water.  This will be signified by you being sent back to the starting point.   
 
-Created By: Jerome Ortega
+Created By: Jerome Ortega   
 Date: June 14, 2017
